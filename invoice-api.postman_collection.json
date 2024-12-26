@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "18ff6f82-b002-4d1f-b92e-61406911b545",
+		"name": "invoice-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25761121"
+	},
+	"item": [
+		{
+			"name": "create invoice",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"invoice_number\": \"INV001\",\n  \"date\": \"2024-01-01\",\n  \"customer_name\": \"John Doe\",\n  \"salesperson_name\": \"Jane Smith\",\n  \"payment_type\": \"CASH\",\n  \"notes\": \"Optional notes about the invoice\",\n  \"products\": [\n    {\n      \"item_name\": \"Bluetooth Speaker\",\n      \"quantity\": 3,\n      \"total_cost\": 630000,\n      \"total_price\": 756000\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/invoices/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"invoices",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list invoice",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/invoices/?size=10&page=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"invoices",
+						""
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2024-12-25",
+							"description": "Filter invoices by date (YYYY-MM-DD)",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "10",
+							"description": "Number of records per page (default: 10)"
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"description": "Page number (default: 1)\n\n"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "invoice detail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/invoices/3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"invoices",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update invoice",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"invoice_number\": \"edit ke lima\",\n  \"date\": \"2024-01-13\",\n  \"customer_name\": \"John Doe Updated 3\",\n  \"salesperson_name\": \"Jane Smith 3\",\n  \"payment_type\": \"CREDIT\",\n  \"notes\": \"3 Updated notes\",\n  \"products\": [\n    {\n      \"item_name\": \"Bluetooth Speaker\",\n      \"quantity\": 4,\n      \"total_cost\": 840000,\n      \"total_price\": 1008000\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/invoices/update/3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"invoices",
+						"update",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete invoice",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/invoices/delete/7",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"invoices",
+						"delete",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "import invoice",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"description": "Only .xlsx files are allowed",
+							"type": "file",
+							"src": "/home/andreas/Downloads/InvoiceImport-2.xlsx"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/invoices/import",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"invoices",
+						"import"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

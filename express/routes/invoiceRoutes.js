@@ -23,3 +23,4 @@ router.delete('/delete/:id', invoiceController.deleteInvoice);
 router.post('/import', upload.single('file'), invoiceController.importInvoices);
 
 module.exports = router;
+
